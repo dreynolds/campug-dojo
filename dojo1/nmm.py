@@ -1,5 +1,8 @@
 import re
 
+class ERROR(Exception):
+    pass
+
 class Board:
     def_data = {}
     for j in '1234567':
@@ -25,7 +28,7 @@ class Board:
 
         self.w_posns = wposns
         self.b_posns = bposns
-        self.next_turn = turn
+        self.player = turn
 
         self.data = self.def_data.copy()
         for p in self.w_posns:
@@ -42,21 +45,12 @@ class Board:
 
             We return False if the move was a failure, True if it was allowed.
         """
-        if src is None:
-            # We're trying to put a new piece down
-            return True
-        else:
-            # We're trying to move a piece
-            # Check that the target is empty
-            if self.data[tgt] != '+':
-                print "X"
-                return False
-            # If we've got a source piece, we're moving a piece.
-            # If we're moving a piece, it must be our own.
-            if self.data[src] != self.next_turn:
-                print "Y"
-                return False
-            return True
+        if self.data[tgt] != '+':
+            raise ERROR("BROKEN")
+        if src is not None:  # moving a piece, not placing
+            if self.data[src] != self.player:
+                raise ERROR("BROKEN")
+        self.data[tgt] = self.player
 
     # Returns notation for the current game position
     def getPosition(self):
@@ -69,7 +63,7 @@ class Board:
             b_repr = '-'
         else:
             b_repr = ','.join(self.b_posns)
-        return "%d,%d %s %s %s" % (self.w, self.b, w_repr, b_repr, self.next_turn)
+        return "%d,%d %s %s %s" % (self.w, self.b, w_repr, b_repr, self.player)
 
     # Returns a string representation of the board
     def getBoard(self):

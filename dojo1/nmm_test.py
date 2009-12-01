@@ -33,7 +33,7 @@ B-----------+-----------+
         Board = nmm.Board("0", "0", ['a7','d7','g4'],
                             ['a1','b2','c3'], "W")
 
-        self.assertTrue(Board.move(src="a7", tgt="a4"))
+        Board.move(src="a7", tgt="a4")
         # Can't place new men
         self.assertFalse(Board.move(tgt="a4"))
         # Can't move from vacant square
