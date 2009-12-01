@@ -34,6 +34,8 @@ class Board:
 
     # Returns notation for the current game position
     def getPosition(self):
+        w_repr = ','
+        #return "%d,%d %s %s %s" % (self.w, self.b)
         return "0,0 a7,d7,g4 a1,b2,c3 W"
 
     # Returns a string representation of the board
