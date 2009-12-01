@@ -26,7 +26,7 @@ B-----------+-----------+
 """)
 
     def testMoveChecking(self):
-        Board = nmm.Board("0,0 a7,d7,g4 a1,b2,c3 W")
+        Board = nmm.Board("0", "0", "a7,d7,g4", "a1,b2,c3", "W")
 
         # Can't place new men
         self.assertFalse(Board.move(tgt="a4"))
@@ -41,7 +41,7 @@ B-----------+-----------+
 
         # Can't choose to capture man in mill when there
         # is an alternative
-        Board = nmm.Board("0,0 a7,d7,g4 a1,b2,d1,g1 W")
+        Board = nmm.Board("0", "0", "a7,d7,g4", "a1,b2,d1,g1", "W")
         self.assertFalse(Board.move(src="g4", tgt="g7", cap="a1"))
 
 

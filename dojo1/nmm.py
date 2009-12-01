@@ -1,6 +1,10 @@
 class Board:
-    def __init__(self, position=None):
-        pass
+    def __init__(self, w, b, wposns, bposns, turn):
+        self.w = w
+        self.b = b
+        self.w_posns = wposns
+        self.b_posns = bposns
+        self.next_turn = turn
 
     # Checks the legality of a move, and
     # updates the position if it is legal
@@ -25,7 +29,7 @@ W-----------W-----------+
 |   |   B---+---+   |   |
 |   |       |       |   |
 |   B-------+-------+   |
-|           |           |
+|           |           |w, b, wposns, bposns, turn
 B-----------+-----------+
 """
 
