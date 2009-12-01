@@ -6,7 +6,7 @@ import nmm
 class NineMensMorrisTest(unittest.TestCase):
 
     def testRepresentation(self):
-        Board = nmm.Board("0,0 a7,d7,g4 a1,b2,c3 W")
+        Board = nmm.Board("0", "0", "a7,d7,g4", "a1,b2,c3", "W")
         self.assertEquals(Board.getPosition(), "0,0 a7,d7,g4 a1,b2,c3 W")
         self.assertEquals(Board.getBoard(),
 """\
