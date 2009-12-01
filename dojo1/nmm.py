@@ -27,9 +27,20 @@ class Board:
         self.b_posns = bposns
         self.next_turn = turn
 
+        self.data = self.def_data.copy()
+        for p in self.w_posns:
+            self.data[p] = 'W'
+        for p in self.b_posns:
+            self.data[p] = 'B'
+
     # Checks the legality of a move, and
     # updates the position if it is legal
     def move(self, tgt, src=None, cap=None):
+        """ Move / place a piece. When moving, the piece is moved from src to tgt.
+            When placing, only tgt is specified. Cap implies that the move will
+            capture a piece.
+        """
+        #if 
         return False
 
     # Returns notation for the current game position
@@ -48,11 +59,6 @@ class Board:
     # Returns a string representation of the board
     def getBoard(self):
         
-        data = self.def_data.copy()
-        for p in self.w_posns:
-            data[p] = 'W'
-        for p in self.b_posns:
-            data[p] = 'B'
 
         return """\
 %(a7)s-----------%(d7)s-----------%(g7)s
@@ -68,7 +74,7 @@ class Board:
 |   %(b2)s-------%(d2)s-------%(f2)s   |
 |           |           |
 %(a1)s-----------%(d1)s-----------%(g1)s
-"""%data
+""" % self.data
 
     @staticmethod
     def parse(boardstr):
