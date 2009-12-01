@@ -2,9 +2,9 @@ import re
 
 class Board:
     def_data = {}
-    for j in range(1,8):
+    for j in '1234567':
         for x in 'abcdefg':
-            def_data[
+            def_data[x+j] = '+'
     def __init__(self, w, b, wposns, bposns, turn):
         """A representation of a 9-man's morris board.
 
@@ -39,8 +39,11 @@ class Board:
     # Returns a string representation of the board
     def getBoard(self):
         
-        data = {}
-
+        data = self.def_data.copy()
+        for p in self.w_posns:
+            data[p] = 'W'
+        for p in self.b_posns:
+            data[p] = 'B'
 
         return """\
 %(a7)s-----------%(d7)s-----------%(g7)s
