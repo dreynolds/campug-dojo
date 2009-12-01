@@ -47,7 +47,7 @@ B-----------+-----------+
 
     def testParseBoard(self):
         b_str = "0,0 a7,d7,g4 a1,b2,c3 W"
-        b = nmm.parse(b_str)
+        b = nmm.Board.parse(b_str)
         self.assertTrue(b.getPosition(), b_str)
 
 

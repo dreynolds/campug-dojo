@@ -1,3 +1,5 @@
+import re
+
 class Board:
     def __init__(self, w, b, wposns, bposns, turn):
         """A representation of a 9-man's morris board.
@@ -11,8 +13,12 @@ class Board:
         - 'bposns' the same for Black
         - 'turn' is 'W' or 'B' according to whose turn is next.
         """
-        self.w = w
-        self.b = b
+        self.w = int(w)
+        self.b = int(b)
+        
+        if abs(self.w-self.b) > 1:
+            raise Exception("bad w/b combination");
+
         self.w_posns = wposns
         self.b_posns = bposns
         self.next_turn = turn
@@ -30,6 +36,8 @@ class Board:
     def getBoard(self):
         
         data = {}
+
+
         return """\
 %(a7)s-----------%(d7)s-----------%(g7)s
 |           |           | 
@@ -46,12 +54,12 @@ class Board:
 %(a1)s-----------%(d1)s-----------%(g1)s
 """%data
 
-import re
-def parse(boardstr):
-    m = re.match(r'(\d),(\d) (\S+) (\S+) ([WB])\Z', boardstr)
-    w, b, wposns, bposns, turn = m.groups()
-    w, b = int(w), int(b)
-    wposns = wposns.split(',')
-    bposns = bposns.split(',')
-    return Board(w, b, wposns, bposns, turn)
+    @staticmethod
+    def parse(boardstr):
+        m = re.match(r'(\d),(\d) (\S+) (\S+) ([WB])\Z', boardstr)
+        w, b, wposns, bposns, turn = m.groups()
+        w, b = int(w), int(b)
+        wposns = wposns.split(',')
+        bposns = bposns.split(',')
+        return Board(w, b, wposns, bposns, turn)
 
