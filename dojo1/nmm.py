@@ -1,5 +1,16 @@
 class Board:
     def __init__(self, w, b, wposns, bposns, turn):
+        """A representation of a 9-man's morris board.
+
+        Arguments are
+
+        - 'w' and 'b' for how many pieces White and Black
+          still have in hand
+        - 'wposns' is a list of the positions of White's
+          stones on the board
+        - 'bposns' the same for Black
+        - 'turn' is 'W' or 'B' according to whose turn is next.
+        """
         self.w = w
         self.b = b
         self.w_posns = wposns
