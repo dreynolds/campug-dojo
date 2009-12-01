@@ -50,6 +50,8 @@ B-----------+-----------+
         b = nmm.Board.parse(b_str)
         self.assertTrue(b.getPosition(), b_str)
 
+    
+
 
 if __name__ == '__main__':
     unittest.main()

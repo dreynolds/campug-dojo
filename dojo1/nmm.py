@@ -1,6 +1,10 @@
 import re
 
 class Board:
+    def_data = {}
+    for j in range(1,8):
+        for x in 'abcdefg':
+            def_data[
     def __init__(self, w, b, wposns, bposns, turn):
         """A representation of a 9-man's morris board.
 
