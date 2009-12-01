@@ -49,10 +49,12 @@ class Board:
             # We're trying to move a piece
             # Check that the target is empty
             if self.data[tgt] != '+':
+                print "X"
                 return False
             # If we've got a source piece, we're moving a piece.
             # If we're moving a piece, it must be our own.
             if self.data[src] != self.next_turn:
+                print "Y"
                 return False
             return True
 
