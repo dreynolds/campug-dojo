@@ -39,9 +39,22 @@ class Board:
         """ Move / place a piece. When moving, the piece is moved from src to tgt.
             When placing, only tgt is specified. Cap implies that the move will
             capture a piece.
+
+            We return False if the move was a failure, True if it was allowed.
         """
-        #if 
-        return False
+        if src is None:
+            # We're trying to put a new piece down
+            return True
+        else:
+            # We're trying to move a piece
+            # Check that the target is empty
+            if self.data[tgt] != '+':
+                return False
+            # If we've got a source piece, we're moving a piece.
+            # If we're moving a piece, it must be our own.
+            if self.data[src] != self.next_turn:
+                return False
+            return True
 
     # Returns notation for the current game position
     def getPosition(self):
