@@ -31,7 +31,10 @@ B-----------+-----------+
 
 import re
 def parse(boardstr):
-    m = re.match(r'(\d),(\d) (\S*) (\S*) (\S)\Z', boardstr)
+    m = re.match(r'(\d),(\d) (\S+) (\S+) ([WB])\Z', boardstr)
     w, b, wposns, bposns, turn = m.groups()
     w, b = int(w), int(b)
-    Board()
+    wposns = wposns.split(',')
+    bposns = bposns.split(',')
+    return Board(w, b, wposns, bposns, turn)
+

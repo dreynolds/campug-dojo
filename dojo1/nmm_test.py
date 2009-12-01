@@ -45,5 +45,11 @@ B-----------+-----------+
         self.assertFalse(Board.move(src="g4", tgt="g7", cap="a1"))
 
 
+    def testParseBoard(self):
+        b_str = "0,0 a7,d7,g4 a1,b2,c3 W"
+        b = nmm.parse(b_str)
+        self.assertTrue(b.getPosition(), b_str)
+
+
 if __name__ == '__main__':
     unittest.main()
