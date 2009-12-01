@@ -1,4 +1,4 @@
-class Game:
+class Board:
     def __init__(self, position=None):
         pass
 
@@ -28,3 +28,10 @@ W-----------W-----------+
 |           |           |
 B-----------+-----------+
 """
+
+import re
+def parse(boardstr):
+    m = re.match(r'(\d),(\d) (\S*) (\S*) (\S)\Z', boardstr)
+    w, b, wposns, bposns, turn = m.groups()
+    w, b = int(w), int(b)
+    Board()
